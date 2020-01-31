@@ -1,0 +1,13 @@
+Package: r4actuaries
+Type: Package
+Title: Favorite R Functions in the book, R for actuaries
+Version: 0.1.0
+Authors@R: person("Issac", "Lee", email = "issactoast@gmail.com",
+                  role = c("aut", "cre"))
+Description: This R package contains functions used in the book named R for actuaries.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    XML
+RoxygenNote: 7.0.2
