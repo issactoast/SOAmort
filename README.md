@@ -1,3 +1,3 @@
-# r4actuaries
+# Society Of Actuaries' Mortality and Other Rate Tables
 
-R package for the book, "R for actuaries"
+Getting Data from Mortality Tables hosted on [mort.soa.org](http://mort.soa.org)

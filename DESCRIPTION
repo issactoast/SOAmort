@@ -1,13 +1,15 @@
-Package: r4actuaries
+Package: SOAmort
 Type: Package
-Title: Favorite R Functions in the book, R for actuaries
+Title: Getting Data from Mortality Tables hosted on the website, mort.soa.org
 Version: 0.1.0
 Authors@R: person("Issac", "Lee", email = "issactoast@gmail.com",
                   role = c("aut", "cre"))
-Description: This R package contains functions used in the book named R for actuaries.
+Description: Web crawler for Mortality and Other Rate Tables hosted by Society of Actuaries.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    XML
+    httr,
+    rvest,
+    purrr
 RoxygenNote: 7.0.2
