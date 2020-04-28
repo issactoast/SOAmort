@@ -67,15 +67,22 @@ getTableInfo <- function(searchInfo, shortTname = TRUE){
 #' @export
 getTable <- function(num){
     url <- paste0("https://mort.soa.org/ViewTable.aspx?&TableIdentity=", num)
-    twebsite <- httr::GET(url)
-    Sys.sleep(3)
-    tbls <- rvest::html_nodes(httr::content(twebsite), "table")
-    ntbls <- length(tbls)
+    
+    ntbls <- 0
+    while (ntbls == 0) {
+        twebsite <- httr::GET(url)
+        Sys.sleep(2)
+        tbls <- rvest::html_nodes(httr::content(twebsite), "table")
+        ntbls <- length(tbls)
+        print("Accessing to mort.soa.org")
+    }
+    print("Success")
+    
     check <- rep(0, ntbls)
     for(k in 1:ntbls){
         check[k] <- ifelse(colnames(rvest::html_table(tbls[[k]], fill = T))[1] == "Row\\Column", 1, 0)
     }
-    
+
     if (sum(check) == 1){
         tinfo <- rvest::html_table(tbls[[1]], fill=T)
         mortTbl <- rvest::html_table(tbls[[4]], fill=T)
