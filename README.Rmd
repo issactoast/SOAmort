@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# SOAmort
+# Society Of Actuaries mortable web-crawler
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -109,7 +109,7 @@ max(RRBultmort$age)
 head(RRBultmort)
 ```
 
-```{r fig.align="center"}
+```{r fig.align="center", out.width="70%"}
 plot(RRBultmort$age, RRBultmort$`Column 1`,
      main = "The Railway Disabled Annuitants Mortality rate",
      xlab = "age",

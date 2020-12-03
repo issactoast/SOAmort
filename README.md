@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# SOAmort
+# Society Of Actuaries mortable web-crawler
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -158,7 +158,7 @@ plot(RRBultmort$age, RRBultmort$`Column 1`,
      ylab = "mortality rate")
 ```
 
-<img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="man/figures/README-unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" />
 
 ## Give me your feedback
 
