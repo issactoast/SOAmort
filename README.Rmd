@@ -74,7 +74,7 @@ We can see there are 7 tables in the result.
 
 ### Access to the tables using table number
 
-The `getTable` function allows you to access the actual table using the table number. For example, you can obtain the fist table 856 in the result variable as follows: 
+The `getTable` function allows you to access the actual table using the table number. For example, you can obtain the fist table, whose number is 856, in the `result` variable as follows: 
 
 ```{r}
 result <- SOAmort::getTable(856)

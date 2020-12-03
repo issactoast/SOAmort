@@ -69,8 +69,8 @@ result$TableName
 #> [3] "Table S-2: 1965 RRB Railway Disabled Annuitants Mortality, ANB"    
 #> [4] "Table S-3: 1965 RRB Railway Totally Disabled Annuitants, ANB"      
 #> [5] "Table S-6: 1956 RRB Railway Remarriage Table - Female, ANB"        
-#> [6] "American Annuitants Table <U+2013> Male, ANB"                      
-#> [7] "American Annuitants Table <U+2013> Female, ANB"
+#> [6] "American Annuitants Table – Male, ANB"                             
+#> [7] "American Annuitants Table – Female, ANB"
 
 # Table Usage
 result$ContentType
@@ -84,8 +84,8 @@ We can see there are 7 tables in the result.
 ### Access to the tables using table number
 
 The `getTable` function allows you to access the actual table using the
-table number. For example, you can obtain the fist table 856 in the
-result variable as follows:
+table number. For example, you can obtain the fist table, whose number
+is 856, in the `result` variable as follows:
 
 ``` r
 result <- SOAmort::getTable(856)
