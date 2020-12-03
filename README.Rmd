@@ -1,0 +1,121 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# SOAmort
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The `SOAmort` is a `R` package that makes web crawling of a website call SOA mort. It has functions to obtain the mortality table data hosted on the website [mort.soa.org](https://mort.soa.org/).
+
+## Install package
+
+```{r eval=FALSE}
+devtools::install_github("issactoast/SOAmort")
+```
+
+## Load package
+
+```{r}
+library(SOAmort)
+```
+
+The package consists of three functions:
+
+- makeSearchInfo
+- getTableInfo
+- getTable
+
+The mort.soa page provide the search options for the various tables using search parameters such as `Usage`, `Nation`, `Table layout` etc. The first two function will used for accessing the search result of the website.
+
+### Search table using makeSearchInfo and getTableInfo
+
+We will make a body to make a search request parameter which can be fed to the `getTableInfo` function. For example, if we want to search the table for USA's Annuitant Mortality select table, the search parameter will be the following: 
+
+```{r}
+myrequest <- makeSearchInfo(
+    tableUsage = "Annuitant Mortality",
+    nation = "United States of America",
+    tableType = "Select")
+```
+
+After make the request parameter, we can feed this to the function `getTableInfo` as follows:
+
+```{r}
+result <- getTableInfo(myrequest)
+```
+
+result variable is a list which contains the infomation of the search result from the website.
+
+```{r}
+# Table numbers which satisfies to the request
+result$TableIdentity
+
+# Table Name/ Description
+result$TableName
+
+# Table Usage
+result$ContentType
+```
+
+We can see there are 7 tables in the result.
+
+### Access to the tables using table number
+
+The `getTable` function allows you to access the actual table using the table number. For example, you can obtain the fist table 856 in the result variable as follows: 
+
+```{r}
+result <- SOAmort::getTable(856)
+```
+
+The package is using `httr` package to crawling, it will keep trying to catch the table utill it reach the maximum try or success to grab the table information.
+
+```{r}
+length(result)
+```
+
+Result shows that there are two table in the 856 table. To see the information about the table you can use `attributes` function.
+
+```{r}
+names(attributes(result[[1]]))
+```
+
+To see the difference between the two table, let us check the table description.
+
+```{r}
+attributes(result[[1]])$`Table Description`
+attributes(result[[2]])$`Table Description`
+```
+
+It says the second table is the Railway Disabled Annuitants Mortality Ultimate Table whose minimum age 38 and the maximum age 95.
+
+```{r}
+RRBultmort <- result[[2]]
+dim(RRBultmort)
+min(RRBultmort$age)
+max(RRBultmort$age)
+head(RRBultmort)
+```
+
+```{r fig.align="center"}
+plot(RRBultmort$age, RRBultmort$`Column 1`,
+     main = "The Railway Disabled Annuitants Mortality rate",
+     xlab = "age",
+     ylab = "mortality rate")
+```
+
+## Give me your feedback 
+
+If you are having any issue and have an idea about the package, please make an issue in the [github repo](https://github.com/issactoast/SOAmort/issues).
